@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<table border="1" id="table">
+</table>
+
+
+<script>
+
+function loadData() {
+
+fetch("http://localhost:3000/bookings")
+.then(res => res.json())
+.then(data => {
+
+    const table = document.getElementById("table");
+
+    table.innerHTML =
+    `<tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Service</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>`;
+
+    data.forEach(b => {
+
+        const row = table.insertRow();
+
+        row.insertCell(0).innerText = b.name;
+        row.insertCell(1).innerText = b.phone;
+        row.insertCell(2).innerText = b.service;
+        row.insertCell(3).innerText = b.date;
+
+        row.insertCell(4).innerHTML =
+        `
+        <button onclick="edit(${b.id})">Edit</button>
+        <button onclick="del(${b.id})">Delete</button>
+        `;
+
+    });
+
+});
+}
+
+function del(id) {
+
+fetch("http://localhost:3000/delete/" + id)
+.then(() => loadData());
+
+}
+
+loadData();
+
+function edit(id) {
+
+window.location =
+"edit.html?id=" + id;
+
+}
+
+</script>
+
+</body>
+</html>

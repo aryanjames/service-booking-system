@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Edit Booking</h2>
+
+<form action="http://localhost:3000/update" method="post">
+
+<input type="hidden" name="id" id="id">
+
+Name<br>
+<input name="name" id="name"><br>
+
+Phone<br>
+<input name="phone" id="phone"><br>
+
+Service<br>
+<input name="service" id="service"><br>
+
+Date<br>
+<input name="date" id="date"><br><br>
+
+<button>Update</button>
+
+</form>
+
+
+<script>
+
+const url = new URL(window.location.href);
+const id = url.searchParams.get("id");
+
+fetch("http://localhost:3000/booking/" + id)
+.then(res => res.json())
+.then(d => {
+
+document.getElementById("id").value = d.id;
+document.getElementById("name").value = d.name;
+document.getElementById("phone").value = d.phone;
+document.getElementById("service").value = d.service;
+document.getElementById("date").value = d.date;
+
+});
+
+</script>
+
+</body>
+</html>

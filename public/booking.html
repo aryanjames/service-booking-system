@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Booking</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Service Booking Form</h1>
+
+<form action="http://localhost:3000/book" method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="phone" required>
+        <br><br>
+
+        <label>Service:</label><br>
+        <select name="service">
+            <option>Car Service</option>
+            <option>Bike Service</option>
+            <option>AC Repair</option>
+            <option>Computer Repair</option>
+        </select>
+        <br><br>
+
+        <label>Date:</label><br>
+        <input type="date" name="date">
+        <br><br>
+
+        <button type="submit">Book Service</button>
+
+    </form>
+
+</body>
+</html>
